@@ -4,26 +4,29 @@ import Controls from './Controls';
 
 describe('Controls component', () => {
   let wrapper;
-  let handleSelection;
+  let dispatch;
   beforeEach(() => {
-    const actions = [
-      { name: 'DO_STUFF', text: 'stuff' },
-      { name: 'other' }
+    const action1 = () => ({ type: 'STUFF' });
+    const action2 = () => ({ type: 'OTHER' });
+
+    const actionData = [
+      { action: action1, text: 'stuff' },
+      { action: action2, text: 'other' }
     ];
-    handleSelection = jest.fn();
+    dispatch = jest.fn();
 
     wrapper = shallow(<Controls
-      actions={actions}
-      handleSelection={handleSelection} />);
+      actions={actionData}
+      dispatch={dispatch} />);
   });
 
   it('renders Controls', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('handlesSelection with the action name', () => {
-    wrapper.findWhere(el => el.key() === 'DO_STUFF').simulate('click');
-    expect(handleSelection).toHaveBeenCalledWith('DO_STUFF');
+  it('dispatches the action', () => {
+    wrapper.findWhere(el => el.key() === 'stuff').simulate('click');
+    expect(dispatch).toHaveBeenCalledWith({ type: 'STUFF' });
   });
 });
   
