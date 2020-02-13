@@ -1,28 +1,30 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { study, takeNap, eatSnack, drinkCoffee } from '../../actions/actions';
+import { getGetCount } from '../../selectors/get-get-count';
 import styles from './Controls.css';
 
-const Controls = ({ actions, dispatch }) => {
-  console.log(actions);
+const Controls = () => {
+  const actions = [
+    { action: drinkCoffee, text: 'Drink Coffee', stateName: 'coffees' },
+    { action: eatSnack, text: 'Snack', stateName: 'snacks' },
+    { action: takeNap, text: 'Nap', stateName: 'naps' },
+    { action: study, text: 'Study', stateName: 'studies' },
+  ];
+  const dispatch = useDispatch();
   return (
     <section className={styles.Controls}>
-      {actions.map(({ action, text, count }) => (
-        <button key={text} onClick={() => dispatch(action())}>
-          {text}
-          {!!count && `- ${count}`}
-        </button>
-      ))}
+      {actions.map(({ action, text, stateName }) => {
+        const count = useSelector(getGetCount(stateName));
+        return (
+          <button key={text} onClick={() => dispatch(action())}>
+            {text}
+            {!!count && `- ${count}`}
+          </button>
+        );
+      })}
     </section>
   );
-};
-
-Controls.propTypes = {
-  actions: PropTypes.arrayOf(PropTypes.shape({
-    action: PropTypes.func.isRequired,
-    text: PropTypes.string,
-    count: PropTypes.number
-  })).isRequired,
-  dispatch: PropTypes.func.isRequired
 };
 
 export default Controls;
