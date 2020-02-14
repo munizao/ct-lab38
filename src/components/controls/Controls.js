@@ -1,26 +1,22 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { study, takeNap, eatSnack, drinkCoffee } from '../../actions/actions';
-import { getGetCount } from '../../selectors/get-get-count';
 import styles from './Controls.css';
+import Button from './Button';
+
+
 
 const Controls = () => {
-  const actions = [
+  const actionObjs = [
     { action: drinkCoffee, text: 'Drink Coffee', stateName: 'coffees' },
     { action: eatSnack, text: 'Snack', stateName: 'snacks' },
     { action: takeNap, text: 'Nap', stateName: 'naps' },
     { action: study, text: 'Study', stateName: 'studies' },
   ];
-  const dispatch = useDispatch();
   return (
     <section className={styles.Controls}>
-      {actions.map(({ action, text, stateName }) => {
-        const count = useSelector(getGetCount(stateName));
+      {actionObjs.map((actionObj) => {
         return (
-          <button key={text} onClick={() => dispatch(action())}>
-            {text}
-            {!!count && `- ${count}`}
-          </button>
+          <Button key={actionObj.text} actionObj={actionObj} />
         );
       })}
     </section>

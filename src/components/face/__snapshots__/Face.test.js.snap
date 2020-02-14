@@ -4,6 +4,6 @@ exports[`Face component renders Face 1`] = `
 <p
   className="Face"
 >
-  😀
+  🤬
 </p>
 `;
