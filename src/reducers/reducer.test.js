@@ -1,15 +1,6 @@
 import { drinkCoffee, eatSnack, takeNap, study } from '../actions/actions';
 import { reducer, initialState } from './reducer';
 
-// let state;
-// let dispatch;
-// beforeEach(() => {
-//   const arr = useReducer(reducer, initialState);
-//   state = arr[0];
-//   dispatch = arr[1];
-//   console.log(arr);
-// });
-
 describe('Reducer module', () => {
   it('increments coffee on drinkCoffee', () => {
     const newState = reducer(initialState, drinkCoffee());
