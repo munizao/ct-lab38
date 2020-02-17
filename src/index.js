@@ -1,21 +1,18 @@
 import React from 'react';
 import { render } from 'react-dom';
-// import { createStore } from 'redux';
-// import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import App from './components/App';
-// import reducer from './reducers/reducer';
+import { reducer, initialState } from './reducers/reducer';
 import './reset.css';
 
-// const store = createStore(reducer);
-
-// render(
-//   <Provider store={store}>
-//     <App />
-//   </Provider>,
-//   document.getElementById('root')
-// );
+const store = createStore(reducer, initialState, 
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 render(
-  <App />,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );
+

@@ -1,28 +1,26 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { study, takeNap, eatSnack, drinkCoffee } from '../../actions/actions';
 import styles from './Controls.css';
+import Button from './Button';
 
-const Controls = ({ actions, dispatch }) => {
-  console.log(actions);
+
+
+const Controls = () => {
+  const actionObjs = [
+    { action: drinkCoffee, text: 'Drink Coffee', stateName: 'coffees' },
+    { action: eatSnack, text: 'Snack', stateName: 'snacks' },
+    { action: takeNap, text: 'Nap', stateName: 'naps' },
+    { action: study, text: 'Study', stateName: 'studies' },
+  ];
   return (
     <section className={styles.Controls}>
-      {actions.map(({ action, text, count }) => (
-        <button key={text} onClick={() => dispatch(action())}>
-          {text}
-          {!!count && `- ${count}`}
-        </button>
-      ))}
+      {actionObjs.map((actionObj) => {
+        return (
+          <Button key={actionObj.text} actionObj={actionObj} />
+        );
+      })}
     </section>
   );
-};
-
-Controls.propTypes = {
-  actions: PropTypes.arrayOf(PropTypes.shape({
-    action: PropTypes.func.isRequired,
-    text: PropTypes.string,
-    count: PropTypes.number
-  })).isRequired,
-  dispatch: PropTypes.func.isRequired
 };
 
 export default Controls;

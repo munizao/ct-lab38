@@ -2,39 +2,7 @@
 
 exports[`Moods container matches a snapshot 1`] = `
 <Fragment>
-  <Controls
-    actions={
-      Array [
-        Object {
-          "action": [Function],
-          "count": 0,
-          "stateName": "coffees",
-          "text": "Drink Coffee",
-        },
-        Object {
-          "action": [Function],
-          "count": 0,
-          "stateName": "snacks",
-          "text": "Snack",
-        },
-        Object {
-          "action": [Function],
-          "count": 0,
-          "stateName": "naps",
-          "text": "Nap",
-        },
-        Object {
-          "action": [Function],
-          "count": 0,
-          "stateName": "studies",
-          "text": "Study",
-        },
-      ]
-    }
-    dispatch={[Function]}
-  />
-  <Face
-    emoji="🤬"
-  />
+  <Controls />
+  <Face />
 </Fragment>
 `;

@@ -4,17 +4,45 @@ exports[`Controls component renders Controls 1`] = `
 <section
   className="Controls"
 >
-  <button
-    key="stuff"
-    onClick={[Function]}
-  >
-    stuff
-  </button>
-  <button
-    key="other"
-    onClick={[Function]}
-  >
-    other
-  </button>
+  <Button
+    actionObj={
+      Object {
+        "action": [Function],
+        "stateName": "coffees",
+        "text": "Drink Coffee",
+      }
+    }
+    key="Drink Coffee"
+  />
+  <Button
+    actionObj={
+      Object {
+        "action": [Function],
+        "stateName": "snacks",
+        "text": "Snack",
+      }
+    }
+    key="Snack"
+  />
+  <Button
+    actionObj={
+      Object {
+        "action": [Function],
+        "stateName": "naps",
+        "text": "Nap",
+      }
+    }
+    key="Nap"
+  />
+  <Button
+    actionObj={
+      Object {
+        "action": [Function],
+        "stateName": "studies",
+        "text": "Study",
+      }
+    }
+    key="Study"
+  />
 </section>
 `;
